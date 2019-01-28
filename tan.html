@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="build/toastr.css"/>
+	</head>
+	<body>
+		<button onclick="mybtn()">点击弹框</button>
+	</body>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="build/toastr.min.js"></script>
+	<!--初始化-->
+	<script type="text/javascript">
+        toastr.options.positionClass = 'toast-bottom-right';
+  </script>
+  <script type="text/javascript">
+  	function mybtn(){
+  		toastr.success('提交数据成功');
+  	}
+  </script>
+</html>

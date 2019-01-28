@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>模糊查询</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#positionItems{
+				position: absolute;
+				display:none;
+				width: 89%;
+				height: 110px;
+				background-color:rgb(255 255 255);
+				overflow: auto;
+				z-index: 999;
+			}
+			li{
+				list-style: none;
+			}
+			li:hover{
+				cursor: pointer;
+				background-color: #1C86EE;
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="form-group">
+			<label class="control-label col-md-2 col-sm-2 inline">职称:</label>
+			<div class="col-md-4 col-sm-4"  style="position:relative;">
+				<input type="text" id="addPosition" class="form-control" name="box" placeholder="选择或输入" autocomplete="off">
+				<ul id="positionItems"></ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+	
+	//	动态获取数据
+//  var addpul=$("#positionItems");//列表框
+//	$("#addPosition").keyup(function () {//输入内容时
+//		addpul.html('');
+//		$.get("",function(res){
+//			for(const r of res.result){
+//				addpul.append("<li>"+r[0]+"</li>")
+//			}
+//		})
+
+	$("#addPosition").click(function(){//点击输入框显示列表
+		    $("#positionItems").css('display', 'block');
+		    return false;
+	    })
+	$("body").click(function(){
+		    $("#positionItems").css('display', 'none');
+	    });
+	
+	 $("#addPosition").keyup(function () {//输入内容时
+		$("#positionItems").css('display', 'block');//显示列表框
+		if ($("#addPosition").val().length <= 0) {//没输入也显示所有选项
+			$("li").css('display', 'block');
+			return;
+		}
+		$("li").css('display', 'none');//输入时先隐藏选项，待模糊匹配后再显示
+		for (var i = 0; i < $("li").length; i++) {//模糊匹配，将所有匹配项显示
+			if ($("li").eq(i).text().indexOf($("#addPosition").val()) != -1) {
+				$("li").eq(i).css('display', 'block');
+			}	
+		}	
+	});
+	var liTempArry=["啦啦啦","我是啦啦啦啦","扒拉噢噢了噢噢","嘻嘻啊嘻嘻","芽哟偶 ","嗷哈嗷啊哦哦啊","啊啊啊啊","啦啦啦","我是啦啦啦啦","扒拉噢噢了","噢噢","嘻嘻啊嘻嘻","芽哟偶","嗷嗷啊嘻哦啊","啊啊哟啊啊"];
+	for(var i=0;i<liTempArry.length;i++){
+//		console.log(liTempArry[i]);
+		$("#positionItems").append("<li>"+liTempArry[i]+"</li>");
+	}
+	
+//  var liTemp="<li>啦啦啦</li><li>我是啦啦啦啦</li><li>扒拉噢噢了</li><li>噢噢</li><li>嘻嘻啊嘻嘻</li><li>芽哟偶 </li>"+
+//  "<li>嗷哈嗷啊哦哦啊</li><li>啊啊啊啊</li><li>啦啦啦</li><li>我是啦啦啦啦</li><li>扒拉噢噢了</li><li>噢噢</li><li>嘻嘻啊嘻嘻</li>"+
+//  "<li>芽哟偶 </li><li>嗷嗷啊嘻哦啊</li><li>啊啊哟啊啊</li>";
+//  $("#positionItems").append(liTemp);
+    $("#positionItems").on('click','li',function () {
+    	$("#addPosition").val($(this).text());
+    });
+	
+   
+			    
+	</script>
+
+</html>

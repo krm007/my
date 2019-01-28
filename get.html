@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>get的url加密</title>
+	</head>
+
+	<body>
+		<form action="" method="" id="myform">
+			姓名：<input type="text" name="user" id="user" value="" /><br /> 密码：
+			<input type="password" name="password" id="password" value="" /><br />
+			<button type="submit" id="push">登陆</button>
+		</form>
+	</body>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			$("#push").click(function() {
+				var user = $("#user").val();
+				var pw = $("#password").val();
+				console.log(user);
+				console.log(pw);
+			});
+		});
+
+//		var str = "http://127.0.0.1:8020/my/get.html" +
+	</script>
+
+</html>

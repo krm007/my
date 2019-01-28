@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>easyui-comboztree组合树</title>
+		<link rel="stylesheet" href="./easyui/themes/bootstrap/easyui.css">
+	</head>
+
+	<body>
+		<!--如果是本地文件的get请求，则可以直接在标签中进行定义，如下设置请求路径和请求方式：-->
+		<div>
+			请选择：<input type="" name="" id="mytree" class="easyui-combotree"  data-options="url:'./testData.json',method:'get'" />
+		</div>
+		<!--<div>
+			请选择：<input type="" name="" id="mytree" class="easyui-combotree" value="Item12" />
+		</div>-->
+	</body>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="./easyui/jquery.easyui.min.js"></script>
+	<script type="text/javascript">
+		//静态数据js写法
+		$("#mytree").combotree({
+//			data: [{
+//				text: 'Item1',
+//				state: 'closed',
+//				children: [{ text: 'Item11' }, { text: 'Item12' }]
+//			}, {
+//				text: 'Item2',
+//				state: 'closed',
+//				children: [{ text: 'Item21' }, { text: 'Item22' }]
+//			}, {
+//				text: 'Item3',
+//				state: 'closed',
+//				children: [{ text: 'Item31' }, { text: 'Item32' }]
+//			}],
+			lines: true,
+//			queryParams: { //在请求远程数据的时候增加查询参数并发送到服务器。
+//
+//			},
+//			onLoadSuccess: function() { //数据加载成功之后触发
+//				console.log(12333333);
+//			}
+//          onBeforeExpand:function(){//节点展开之前触发
+//          	console.log($('#mytree').combotree('tree'));
+//          }
+//			onExpand: function() { //在节点展开的时候出发
+//				console.log('节点展开');
+//			}
+            onSelect:function(){//用户选择节点时触发
+            	console.log($('#mytree').combotree('tree').tree('getData'));
+            }
+		});
+		
+		var tree = $('#mytree').combotree('tree');//获取当前combotree的tree对象
+		var data = tree.tree('getSelected');//获取当前选中的节点
+//		$('#mytree').combotree('setValue',data.id);//设置设备类型下拉树的值
+		
+		
+	</script>
+
+</html>

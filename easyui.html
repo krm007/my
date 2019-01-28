@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="./easyui/themes/default/easyui.css">
+		<link rel="stylesheet" type="text/css" href="./easyui/themes/icon.css">
+		<link rel="stylesheet" type="text/css" href="./easyui/demo/demo.css">
+		<script type="text/javascript" src="./easyui/jquery.min.js"></script>
+		<script type="text/javascript" src="./easyui/jquery.easyui.min.js"></script>
+	</head>
+
+	<body>
+		<h2>我的第一个easyui demo</h2>
+		<!--<p>类似于说明。。。</p>
+		<div style="margin:20px 0 10px 0;">
+			<a href="#" class="easyui-linkbutton" onclick="javascript:$('#p').panel('open')">打开</a>
+			<a href="#" class="easyui-linkbutton" onclick="javascript:$('#p').panel('close')">关闭</a>
+		</div>
+		<div id="p" class="easyui-panel" title="Basic Panel" style="width:700px;height:200px;padding:10px;">
+			<p style="font-size:14px">内容标题，以下是内容</p>
+			<ul>
+				<li>easyui is a collection of user-interface plugin based on jQuery.</li>
+				<li>easyui provides essential functionality for building modem, interactive, javascript applications.</li>
+				<li>using easyui you don't need to write many javascript code, you usually defines user-interface by writing some HTML markup.</li>
+				<li>complete framework for HTML5 web page.</li>
+				<li>easyui save your time and scales while developing your products.</li>
+				<li>easyui is very easy but powerful.</li>
+			</ul>
+		</div>-->
+		<form method="post">
+	<table class="dv-table" style="width:100%;background:#fafafa;padding:5px;margin-top:5px;">
+		<tr>
+			<td>用户名</td>
+			<td><input name="firstname" class="easyui-validatebox" required="true"></input></td>
+			<td>密码</td>
+			<td><input name="lastname" class="easyui-validatebox" required="true"></input></td>
+		</tr>
+		<tr>
+			<td>手机</td>
+			<td><input name="phone"></input></td>
+			<td>邮箱</td>
+			<td><input name="email" class="easyui-validatebox" validType="email"></input></td>
+		</tr>
+	</table>
+	<div style="padding:5px 0;text-align:right;padding-right:30px">
+		<a href="#" class="easyui-linkbutton" iconCls="icon-save" plain="true" onclick="saveItem(<?php echo $_REQUEST['index'];?>)">保存</a>
+		<a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="cancelItem(<?php echo $_REQUEST['index'];?>)">取消</a>
+	</div>
+	</body>
+<script type="text/javascript">
+	function saveItem(index){
+	var row = $('#dg').datagrid('getRows')[index];
+	var url = row.isNewRecord ? 'save_user.php' : 'update_user.php?id='+row.id;
+	$('#dg').datagrid('getRowDetail',index).find('form').form('submit',{
+		url: url,
+		onSubmit: function(){
+			return $(this).form('validate');
+		},
+		success: function(data){
+			data = eval('('+data+')');
+			data.isNewRecord = false;
+			$('#dg').datagrid('collapseRow',index);
+			$('#dg').datagrid('updateRow',{
+				index: index,
+				row: data
+			});
+		}
+	});
+}
+</script>
+</html>

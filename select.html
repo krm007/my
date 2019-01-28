@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<!--<div style="position:relative;">
+			<span style="margin-left:100px;width:18px;overflow:hidden;">
+<select style="width:118px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">
+<option value="测试1">测试1</option>
+<option value="测试2">测试2</option>
+<option value="测试3">测试3</option>
+</select></span>
+			<input name="box" style="width:100px;position:absolute;left:0px;">
+		</div>
+<hr />-->
+		<div style="position:relative;">
+			<span style="margin-left:100px;width:18px;overflow:hidden;">
+<select style="width:118px;margin-left:-100px" onchange="this.parentNode.nextSibling.value=this.value">
+<option value="德国">德国</option>
+<option value="挪威">挪威</option>
+<option value="瑞士"> 瑞士</option>
+</select></span><input name="box" style="width:100px;position:absolute;left:0px;">
+		</div>
+		
+		
+		<!--<div style="width: 200px;height: 200px;background-color: red;overflow: hidden;">
+			<div style="width: 400px;height: 200px;background-color: yellow;">我是子元素</div>
+		我是你爸爸</div>
+		-->
+		<div>
+      <span style="margin-left:100px;width:18px;overflow:hidden;background-color: red;">
+       <select id="DanWei" style="width:235px;margin-left:-86px;height:31px;background-color: pink;" onchange="danwei()">
+             <option value="m3/s" selected>m3/s</option>
+             <option value="mm">mm</option>
+             <option value="℃">℃</option>
+             <option value="KV">KV</option>
+        </select>
+        lala</span>  
+        <input type="text" id="units" name="units" style="width: 215px;margin-left: -239px;height: 31px;color:#000;background-color: green;">
+ 
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+ 
+     //用于单位选择更换赋值给文本框
+     function danwei(){
+          var text=$("#DanWei").val();
+          $("#units").val(text);
+     }
+</script>
+	</body>
+
+</html>

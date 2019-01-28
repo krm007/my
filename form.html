@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		        <form id="mypost" name="f_ation" action=""  class="">
+                    <div class="layui-form-item">
+                    <input id="wd" maxlength="100" name="keyword" value="" type="text" />
+                    
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">检索范围：</label>
+                        <div class="layui-input-block">
+                            <label><input type="checkbox" name="range" title="主诉" value="0" >主诉</label>
+                            <label><input type="checkbox" name="range" title="诊断" value="1" >诊断</label>
+                            <label><input type="checkbox" name="range" title="处方" value="2" >处方</label>
+                            <label><input type="checkbox" name="range" title="备注" value="3" >备注</label>
+                            <label><input type="checkbox" name="range" title="检查部位" value="4" >检查部位</label>
+                        </div>
+                    </div>
+                    <input value=" 搜 索 " class="search_button" type="submit" lay-submit lay-filter="inquire" id="my"/>
+                </form>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript">
+			$("#my").click(function(){
+				$.ajax({
+					url:'index.html',
+					type:'post',
+					data:$('#mypost').serialize(),
+					dataType:'JSON',
+					success:function(data){
+						window.location.href="/index/"
+					}
+				})
+			})
+//          $("input:checkbox[name=range]").each(function(i,itm){
+//          	console.log(itm);
+//          	if($(this).is(':checked')){
+//          		$(this).parent().show();
+//          	}else{
+//          		$(this).parent().hide();
+//          		
+//          	}
+//          })
+
+
+
+function verify(){
+        var kw=$("#wd").val();//获取输入框的值
+        var checkbox=[];
+        var range=document.getElementsByName("range");//获取复选框
+        for(i in range){
+            if(range[i].checked){
+                checkbox.push(range[i].value);
+            }
+        }
+        //console.log(checkbox);
+        if(kw==''){
+            alert("请输入检索内容");
+        }else if(checkbox.length ==0){
+            alert("请至少选择一个检索范围");
+        }
+    }
+		</script>
+	</body>
+</html>
